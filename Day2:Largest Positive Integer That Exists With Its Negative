@@ -1,0 +1,26 @@
+class Solution {
+    public int findMaxK(int[] nums) {
+        ArrayList<Integer>pos=new ArrayList<>();
+        ArrayList<Integer>neg= new ArrayList<>();
+        for(int i=0;i<nums.length;i++)
+        
+        {
+            if(nums[i]>0)
+            {
+                pos.add(nums[i]);
+            }else
+            {
+                neg.add(nums[i]);
+            }
+        }
+        Collections.sort(pos);
+        for(int i=pos.size()-1;i>=0;i--)
+        {
+            if(neg.contains(-pos.get(i)))
+            {
+                return pos.get(i);
+            }
+        }
+        return -1;
+    }
+}
